@@ -1,0 +1,336 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum TradeType {
+  BUY
+  SELL
+}
+
+enum TradeStatus {
+  PENDING
+  OPEN
+  CLOSED
+  CANCELLED
+  EXPIRED
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  TRADE_PROFIT
+  TRADE_LOSS
+  REFERRAL_BONUS
+  BONUS
+  FEE
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum KYCStatus {
+  PENDING
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+}
+
+enum NotificationType {
+  TRADE_EXECUTED
+  TRADE_CLOSED
+  DEPOSIT_CONFIRMED
+  WITHDRAWAL_PROCESSED
+  KYC_APPROVED
+  KYC_REJECTED
+  REFERRAL_BONUS
+  AI_INSIGHT
+  SYSTEM
+  SECURITY_ALERT
+}
+
+enum AssetCategory {
+  FOREX
+  CRYPTO
+  COMMODITIES
+  STOCKS
+  INDICES
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  username      String    @unique
+  passwordHash  String
+  firstName     String?
+  lastName      String?
+  phone         String?
+  avatar        String?
+  role          Role      @default(USER)
+  isEmailVerified Boolean  @default(false)
+  isActive      Boolean   @default(true)
+  isTwoFactorEnabled Boolean @default(false)
+  twoFactorSecret String?
+
+  wallet       Wallet?
+  trades       Trade[]
+  transactions Transaction[]
+  referrals    Referral[]
+  referredBy   String?
+  referrer     User?     @relation("Referrals", fields: [referredBy], references: [id])
+  referredUsers User[]   @relation("Referrals")
+  notifications Notification[]
+  kycSubmission KYCSubmission?
+  aiConversations AIConversation[]
+  adminLogs    AdminLog[]  @relation("AdminActions")
+  refreshTokens RefreshToken[]
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([email])
+  @@index([username])
+  @@map("users")
+}
+
+model Wallet {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  balance         Decimal   @default(0) @db.Decimal(18, 8)
+  demoBalance     Decimal   @default(10000) @db.Decimal(18, 8)
+  availableBalance Decimal  @default(0) @db.Decimal(18, 8)
+  lockedBalance   Decimal   @default(0) @db.Decimal(18, 8)
+  totalProfit     Decimal   @default(0) @db.Decimal(18, 8)
+  totalLoss       Decimal   @default(0) @db.Decimal(18, 8)
+  currency        String    @default("USD")
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@map("wallets")
+}
+
+model Asset {
+  id          String        @id @default(cuid())
+  symbol      String        @unique
+  name        String
+  category    AssetCategory
+  currentPrice Decimal      @db.Decimal(18, 8)
+  previousPrice Decimal     @db.Decimal(18, 8)
+  dailyChange Decimal       @default(0) @db.Decimal(10, 4)
+  dailyHigh   Decimal       @db.Decimal(18, 8)
+  dailyLow    Decimal       @db.Decimal(18, 8)
+  volume      Decimal       @default(0) @db.Decimal(18, 4)
+  isActive    Boolean       @default(true)
+  precision   Int           @default(5)
+  pipSize     Decimal       @default(0.0001) @db.Decimal(10, 6)
+
+  trades      Trade[]
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([symbol])
+  @@map("assets")
+}
+
+model Trade {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assetId       String
+  asset         Asset       @relation(fields: [assetId], references: [id])
+  type          TradeType
+  status        TradeStatus @default(PENDING)
+  amount        Decimal     @db.Decimal(18, 8)
+  entryPrice    Decimal     @db.Decimal(18, 8)
+  exitPrice     Decimal?
+  stopLoss      Decimal?    @db.Decimal(18, 8)
+  takeProfit    Decimal?    @db.Decimal(18, 8)
+  profitLoss    Decimal?    @db.Decimal(18, 8)
+  commission    Decimal     @default(0) @db.Decimal(18, 8)
+  duration      Int?
+  isDemo        Boolean     @default(false)
+  closedAt      DateTime?
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([userId])
+  @@index([assetId])
+  @@index([status])
+  @@map("trades")
+}
+
+model Transaction {
+  id              String            @id @default(cuid())
+  userId          String
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type            TransactionType
+  status          TransactionStatus @default(PENDING)
+  amount          Decimal           @db.Decimal(18, 8)
+  fee             Decimal           @default(0) @db.Decimal(18, 8)
+  balance         Decimal           @db.Decimal(18, 8)
+  description     String?
+  reference       String?
+  paymentMethod   String?
+  walletAddress   String?
+  txHash          String?
+
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  @@index([userId])
+  @@index([type])
+  @@index([status])
+  @@map("transactions")
+}
+
+model Referral {
+  id          String   @id @default(cuid())
+  referrerId  String
+  referrer    User     @relation(fields: [referrerId], references: [id], onDelete: Cascade)
+  refereeId   String   @unique
+  referee     User     @relation(fields: [refereeId], references: [id], onDelete: Cascade)
+  bonusAmount Decimal  @default(0) @db.Decimal(18, 8)
+  isBonusPaid Boolean  @default(false)
+  code        String   @unique
+
+  createdAt   DateTime @default(now())
+
+  @@index([referrerId])
+  @@map("referrals")
+}
+
+model Notification {
+  id        String            @id @default(cuid())
+  userId    String
+  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  title     String
+  message   String
+  isRead    Boolean           @default(false)
+  link      String?
+
+  createdAt DateTime          @default(now())
+
+  @@index([userId])
+  @@index([isRead])
+  @@map("notifications")
+}
+
+model KYCSubmission {
+  id              String     @id @default(cuid())
+  userId          String     @unique
+  user            User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status          KYCStatus  @default(PENDING)
+  documentType    String
+  documentUrl     String
+  selfieUrl       String?
+  addressProofUrl String?
+  country         String?
+  dateOfBirth     DateTime?
+  reviewedBy      String?
+  reviewNote      String?
+  reviewedAt      DateTime?
+  submittedAt     DateTime   @default(now())
+
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  @@index([status])
+  @@map("kyc_submissions")
+}
+
+model AIConversation {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      String
+  content   String
+  tokens    Int      @default(0)
+  model     String   @default("gpt-4o")
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("ai_conversations")
+}
+
+model AdminLog {
+  id        String   @id @default(cuid())
+  adminId   String
+  admin     User     @relation("AdminActions", fields: [adminId], references: [id])
+  action    String
+  entity    String
+  entityId  String?
+  details   Json?
+  ipAddress String?
+
+  createdAt DateTime @default(now())
+
+  @@index([adminId])
+  @@map("admin_logs")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  isRevoked Boolean  @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+model MarketData {
+  id        String   @id @default(cuid())
+  symbol    String
+  open      Decimal  @db.Decimal(18, 8)
+  high      Decimal  @db.Decimal(18, 8)
+  low       Decimal  @db.Decimal(18, 8)
+  close     Decimal  @db.Decimal(18, 8)
+  volume    Decimal  @db.Decimal(18, 4)
+  timestamp DateTime
+
+  @@index([symbol])
+  @@index([timestamp])
+  @@map("market_data")
+}
+
+model PlatformStats {
+  id              String   @id @default(cuid())
+  totalUsers      Int      @default(0)
+  activeUsers     Int      @default(0)
+  totalTrades     Int      @default(0)
+  totalVolume     Decimal  @default(0) @db.Decimal(18, 4)
+  totalRevenue    Decimal  @default(0) @db.Decimal(18, 8)
+  totalDeposits   Decimal  @default(0) @db.Decimal(18, 8)
+  totalWithdrawals Decimal @default(0) @db.Decimal(18, 8)
+  date            DateTime @unique
+
+  createdAt       DateTime @default(now())
+
+  @@map("platform_stats")
+}

@@ -1,0 +1,32 @@
+{
+  "name": "nextrade-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-Enhanced Trading Platform",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:server\"",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:server": "npm run start:dev --workspace=apps/server",
+    "build": "npm run build --workspace=packages/types && npm run build --workspace=packages/utils && npm run build --workspace=packages/ui && npm run build --workspace=apps/web && npm run build --workspace=apps/server",
+    "build:web": "npm run build --workspace=apps/web",
+    "build:server": "npm run build --workspace=apps/server",
+    "lint": "npm run lint --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "db:migrate": "npm run migrate --workspace=apps/server",
+    "db:seed": "npm run seed --workspace=apps/server",
+    "db:studio": "npm run studio --workspace=apps/server",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.5",
+    "prettier": "^3.2.5",
+    "eslint": "^8.57.0"
+  }
+}
