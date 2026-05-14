@@ -16,7 +16,6 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./src/*"],
-      "@nextrade/ui": ["../../packages/ui/src"],
       "@nextrade/types": ["../../packages/types/src"],
       "@nextrade/utils": ["../../packages/utils/src"]
     }

@@ -7,14 +7,13 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { TradingService } from './trading.service';
-import { AfterProviderInit } from '@nestjs/common';
 
 @WebSocketGateway({
   cors: { origin: process.env.CORS_ORIGIN || 'http://localhost:3000', credentials: true },
 })
 export class MarketGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
-  server: Server;
+  server!: Server;
 
   private priceUpdateInterval: NodeJS.Timeout | null = null;
 

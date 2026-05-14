@@ -34,7 +34,7 @@ export default function AdminDepositsPage() {
   const [withdrawals, setWithdrawals] = useState<Transaction[]>([]);
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
-  const { toast } = useToast();
+  const toast = useToast();
 
   useEffect(() => {
     fetchData();

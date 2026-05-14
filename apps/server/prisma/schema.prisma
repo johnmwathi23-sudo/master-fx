@@ -90,7 +90,8 @@ model User {
   wallet       Wallet?
   trades       Trade[]
   transactions Transaction[]
-  referrals    Referral[]
+  referrals           Referral[] @relation("ReferralReferrer")
+  referredAsReferee   Referral[] @relation("ReferralReferee")
   referredBy   String?
   referrer     User?     @relation("Referrals", fields: [referredBy], references: [id])
   referredUsers User[]   @relation("Referrals")
@@ -205,9 +206,9 @@ model Transaction {
 model Referral {
   id          String   @id @default(cuid())
   referrerId  String
-  referrer    User     @relation(fields: [referrerId], references: [id], onDelete: Cascade)
+  referrer    User     @relation("ReferralReferrer", fields: [referrerId], references: [id], onDelete: Cascade)
   refereeId   String   @unique
-  referee     User     @relation(fields: [refereeId], references: [id], onDelete: Cascade)
+  referee     User     @relation("ReferralReferee", fields: [refereeId], references: [id], onDelete: Cascade)
   bonusAmount Decimal  @default(0) @db.Decimal(18, 8)
   isBonusPaid Boolean  @default(false)
   code        String   @unique

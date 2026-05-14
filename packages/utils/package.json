@@ -9,6 +9,7 @@
     "tailwind-merge": "^2.3.0"
   },
   "scripts": {
+    "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

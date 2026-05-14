@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run dev:web\" \"npm run dev:server\"",
     "dev:web": "npm run dev --workspace=apps/web",
     "dev:server": "npm run start:dev --workspace=apps/server",
-    "build": "npm run build --workspace=packages/types && npm run build --workspace=packages/utils && npm run build --workspace=packages/ui && npm run build --workspace=apps/web && npm run build --workspace=apps/server",
+    "build": "npm run build --workspace=apps/web && npm run build --workspace=apps/server",
     "build:web": "npm run build --workspace=apps/web",
     "build:server": "npm run build --workspace=apps/server",
     "lint": "npm run lint --workspaces",
@@ -24,9 +24,18 @@
     "docker:build": "docker-compose build"
   },
   "devDependencies": {
+    "@types/node": "^20.12.12",
+    "caniuse-lite": "^1.0.30001792",
     "concurrently": "^8.2.2",
-    "typescript": "^5.4.5",
+    "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "eslint": "^8.57.0"
+    "prisma": "^5.22.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "engine.io-client": "^6.6.4",
+    "lodash": "^4.18.1",
+    "postcss": "^8.5.14",
+    "rxjs": "^7.8.2"
   }
 }

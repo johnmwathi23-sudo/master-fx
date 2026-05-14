@@ -94,7 +94,7 @@ async function main() {
     await prisma.asset.upsert({
       where: { symbol: asset.symbol },
       update: {},
-      create: asset,
+      create: asset as any,
     });
   }
 

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@nextrade/ui', '@nextrade/types', '@nextrade/utils'],
+  transpilePackages: ['@nextrade/types', '@nextrade/utils'],
   images: {
     domains: ['avatars.githubusercontent.com', 'lh3.googleusercontent.com'],
   },

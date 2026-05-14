@@ -22,7 +22,7 @@ interface KycSubmission {
 export default function AdminKycPage() {
   const [submissions, setSubmissions] = useState<KycSubmission[]>([]);
   const [loading, setLoading] = useState(true);
-  const { toast } = useToast();
+  const toast = useToast();
 
   useEffect(() => {
     fetchSubmissions();

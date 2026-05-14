@@ -52,7 +52,7 @@ export class NotificationsService {
   async sendToAll(title: string, message: string, specificUserId?: string) {
     if (specificUserId) {
       return this.prisma.notification.create({
-        data: { userId: specificUserId, type: 'ADMIN', title, message },
+        data: { userId: specificUserId, type: 'SYSTEM', title, message },
       });
     }
 
@@ -64,7 +64,7 @@ export class NotificationsService {
     const result = await this.prisma.notification.createMany({
       data: users.map(u => ({
         userId: u.id,
-        type: 'ADMIN',
+        type: 'SYSTEM',
         title,
         message,
       })),

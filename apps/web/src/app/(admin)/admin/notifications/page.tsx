@@ -20,7 +20,7 @@ export default function AdminNotificationsPage() {
   const [message, setMessage] = useState('');
   const [recent, setRecent] = useState<Notification[]>([]);
   const [sending, setSending] = useState(false);
-  const { toast } = useToast();
+  const toast = useToast();
 
   useEffect(() => {
     fetchRecent();
