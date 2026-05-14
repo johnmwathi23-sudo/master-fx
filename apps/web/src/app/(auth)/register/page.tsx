@@ -36,7 +36,7 @@ export default function RegisterPage() {
       api.setAuth(data.accessToken, data.refreshToken);
       localStorage.setItem('user', JSON.stringify(data.user));
       setUser(data.user);
-      toast.success('Account created!', 'Welcome to NexTrade. Your demo account has $10,000 ready.');
+      toast.success('Account created!', 'Welcome to Master FX. Your demo account has $10,000 ready.');
       router.push('/dashboard');
     } catch (err: any) {
       toast.error('Registration failed', err.message);

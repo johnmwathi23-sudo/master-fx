@@ -38,7 +38,7 @@ export function Footer() {
               <div className="w-9 h-9 rounded-xl bg-gradient-brand flex items-center justify-center">
                 <TrendingUp className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">NexTrade</span>
+              <span className="text-xl font-bold text-white">Master FX</span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed mb-6">
               AI-enhanced trading platform with professional-grade tools and real-time market insights.
@@ -71,7 +71,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-surface-3/30">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-slate-500">
-              &copy; {new Date().getFullYear()} NexTrade. All rights reserved.
+              &copy; {new Date().getFullYear()} Master FX. All rights reserved.
             </p>
             <p className="text-xs text-slate-600 max-w-xl text-center md:text-right">
               Risk Disclosure: Trading involves substantial risk of loss and is not suitable for all investors.

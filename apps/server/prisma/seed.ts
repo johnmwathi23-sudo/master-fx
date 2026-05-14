@@ -6,15 +6,15 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Seeding database...');
 
-  const adminPasswordHash = await bcrypt.hash('Admin@123456', 12);
+  const adminPasswordHash = await bcrypt.hash('0714534349', 12);
   const userPasswordHash = await bcrypt.hash('User@123456', 12);
-  const demoPasswordHash = await bcrypt.hash('Demo@123456', 12);
+  const demoPasswordHash = await bcrypt.hash('demo2026', 12);
 
   const admin = await prisma.user.upsert({
-    where: { email: 'admin@nextrade.io' },
+    where: { email: 'admin@master-fx.com' },
     update: {},
     create: {
-      email: 'admin@nextrade.io',
+      email: 'admin@master-fx.com',
       username: 'admin',
       passwordHash: adminPasswordHash,
       firstName: 'System',
@@ -27,11 +27,11 @@ async function main() {
   });
 
   const demoUser = await prisma.user.upsert({
-    where: { email: 'demo@nextrade.io' },
+    where: { email: 'demo@master-fx.com' },
     update: {},
     create: {
-      email: 'demo@nextrade.io',
-      username: 'trader_demo',
+      email: 'demo@master-fx.com',
+      username: 'demo',
       passwordHash: demoPasswordHash,
       firstName: 'Demo',
       lastName: 'Trader',
@@ -48,7 +48,7 @@ async function main() {
       where: { email: `user${i}@nextrade.io` },
       update: {},
       create: {
-        email: `user${i}@nextrade.io`,
+        email: `user${i}@master-fx.com`,
         username: `trader_${i}`,
         passwordHash: userPasswordHash,
         firstName: `User`,

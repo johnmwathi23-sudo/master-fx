@@ -19,7 +19,7 @@ export function AIWidget() {
     {
       id: '1',
       role: 'assistant',
-      content: 'Hi! I\'m NexTrade AI. Ask me anything about markets, trading, or risk management.',
+      content: 'Hi! I\'m Master FX AI. Ask me anything about markets, trading, or risk management.',
       timestamp: new Date(),
     },
   ]);
@@ -102,7 +102,7 @@ export function AIWidget() {
                   <Bot className="w-4 h-4 text-accent-amber" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white">NexTrade AI</h3>
+                  <h3 className="text-sm font-semibold text-white">Master FX AI</h3>
                   <p className="text-xs text-slate-500">GPT-4o powered</p>
                 </div>
               </div>

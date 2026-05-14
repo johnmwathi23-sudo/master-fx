@@ -11,7 +11,7 @@ import { useToast } from '@/components/ui/toaster';
 
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState('profile');
-  const [profile, setProfile] = useState({ firstName: 'Demo', lastName: 'Trader', email: 'demo@nextrade.io', phone: '+1 234 567 890' });
+  const [profile, setProfile] = useState({ firstName: 'Demo', lastName: 'Trader', email: 'demo@master-fx.com', phone: '+1 234 567 890' });
   const toast = useToast();
 
   return (

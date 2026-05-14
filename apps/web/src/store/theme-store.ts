@@ -27,6 +27,6 @@ export const useThemeStore = create<ThemeState>()(
         set({ mode });
       },
     }),
-    { name: 'nextrade-theme' },
+    { name: 'masterfx-theme' },
   ),
 );

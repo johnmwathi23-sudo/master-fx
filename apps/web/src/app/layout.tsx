@@ -7,12 +7,12 @@ import { ToasterProvider } from '@/components/ui/toaster-provider';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'NexTrade - AI-Enhanced Trading Platform',
+    title: 'Master FX - AI-Enhanced Trading Platform',
   description: 'Trade smarter with AI-powered insights, real-time market data, and professional-grade tools. Join thousands of traders on the most advanced trading platform.',
   keywords: ['trading', 'forex', 'crypto', 'stocks', 'AI trading', 'investment platform'],
-  authors: [{ name: 'NexTrade' }],
+  authors: [{ name: 'Master FX' }],
   openGraph: {
-    title: 'NexTrade - AI-Enhanced Trading Platform',
+  title: 'Master FX - AI-Enhanced Trading Platform',
     description: 'Trade smarter with AI-powered insights and professional-grade tools.',
     type: 'website',
   },

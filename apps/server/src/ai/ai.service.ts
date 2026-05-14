@@ -24,7 +24,7 @@ export class AiService {
       take: 10,
     });
 
-    const systemPrompt = `You are NexTrade AI, an intelligent trading assistant for the NexTrade platform. 
+    const systemPrompt = `You are Master FX AI, an intelligent trading assistant for the Master FX platform. 
 You help users with:
 - Market analysis and trading insights
 - Risk management advice
@@ -120,7 +120,7 @@ ${context ? `\nAdditional context: ${context}` : ''}`;
     const lowerMessage = message.toLowerCase();
 
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-      return 'Hello! I\'m NexTrade AI, your trading assistant. I can help you with market analysis, trading strategies, risk management, and platform features. What would you like to know?';
+      return 'Hello! I\'m Master FX AI, your trading assistant. I can help you with market analysis, trading strategies, risk management, and platform features. What would you like to know?';
     }
     if (lowerMessage.includes('market') || lowerMessage.includes('price') || lowerMessage.includes('trend')) {
       return 'Based on current market conditions, major forex pairs are showing moderate volatility. EUR/USD is consolidating near key support levels, while GBP/USD shows bullish momentum. Crypto markets are experiencing a relief rally. Remember: this is analysis, not financial advice.';

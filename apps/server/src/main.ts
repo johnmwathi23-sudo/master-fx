@@ -43,7 +43,7 @@ async function bootstrap() {
   await prismaService.enableShutdownHooks(app);
 
   await app.listen(port);
-  console.log(`🚀 NexTrade API running on http://localhost:${port}`);
+  console.log(`🚀 Master FX API running on http://localhost:${port}`);
   console.log(`📊 API docs: http://localhost:${port}/api/docs`);
 }
 

@@ -41,7 +41,7 @@ export default function LoginPage() {
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
       <div className="text-center mb-8">
         <h1 className="text-2xl font-bold text-white">Welcome Back</h1>
-        <p className="mt-2 text-sm text-slate-400">Sign in to your NexTrade account</p>
+        <p className="mt-2 text-sm text-slate-400">Sign in to your Master FX account</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">

@@ -1,5 +1,5 @@
 {
-  "name": "@nextrade/server",
+  "name": "@masterfx/server",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -13,8 +13,8 @@
     "typecheck": "tsc --noEmit",
     "migrate": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
-    "migrate:reset": "prisma migrate reset",
-    "seed": "ts-node prisma/seed.ts",
+    "migrate:reset": "prisma migrate reset --force",
+    "seed": "npx prisma db seed",
     "studio": "prisma studio",
     "generate": "prisma generate"
   },

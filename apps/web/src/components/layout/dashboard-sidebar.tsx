@@ -39,7 +39,7 @@ export function DashboardSidebar() {
             <div className="w-9 h-9 rounded-xl bg-gradient-brand flex items-center justify-center">
               <TrendingUp className="w-5 h-5 text-white" />
             </div>
-            <span className="text-lg font-bold text-white">NexTrade</span>
+            <span className="text-lg font-bold text-white">Master FX</span>
           </Link>
         )}
         {collapsed && (

@@ -22,6 +22,6 @@ export const useAuthStore = create<AuthState>()(
       setLoading: (isLoading) => set({ isLoading }),
       logout: () => set({ user: null, isAuthenticated: false, isLoading: false }),
     }),
-    { name: 'nextrade-auth', partialize: (state) => ({ user: state.user, isAuthenticated: state.isAuthenticated }) },
+    { name: 'masterfx-auth', partialize: (state) => ({ user: state.user, isAuthenticated: state.isAuthenticated }) },
   ),
 );

@@ -32,7 +32,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 rounded-lg hover:bg-surface-2 transition-colors text-slate-400">
           {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
-        <span className="text-sm font-semibold text-white">NexTrade</span>
+        <span className="text-sm font-semibold text-white">Master FX</span>
         <div className="w-9" />
       </div>
 

@@ -24,7 +24,7 @@ const quickQuestions = [
 
 export default function AIAssistantPage() {
   const [messages, setMessages] = useState<Message[]>([
-    { id: '1', role: 'assistant', content: 'Hello! I am NexTrade AI, your personal trading assistant. I can help you analyze markets, understand trading concepts, manage risk, and navigate the platform. What would you like to know?', timestamp: new Date() },
+    { id: '1', role: 'assistant', content: 'Hello! I am Master FX AI, your personal trading assistant. I can help you analyze markets, understand trading concepts, manage risk, and navigate the platform. What would you like to know?', timestamp: new Date() },
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -101,7 +101,7 @@ export default function AIAssistantPage() {
                       {msg.role === 'assistant' && (
                         <div className="flex items-center gap-2 mb-2">
                           <Bot className="w-4 h-4 text-accent-amber" />
-                          <span className="text-xs font-medium text-accent-amber">NexTrade AI</span>
+                          <span className="text-xs font-medium text-accent-amber">Master FX AI</span>
                         </div>
                       )}
                       <p className="text-sm text-slate-200 leading-relaxed whitespace-pre-wrap">{msg.content}</p>

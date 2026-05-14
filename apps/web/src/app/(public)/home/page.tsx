@@ -31,8 +31,8 @@ const testimonials = [
 
 const faqs = [
   { q: 'How does the AI trading assistant work?', a: 'Our AI analyzes thousands of market signals in real-time using advanced language models. It identifies patterns, assesses risk, and provides actionable insights — but always reminds you that these are suggestions, not financial advice.' },
-  { q: 'Is my money safe on NexTrade?', a: 'We employ bank-grade security including 256-bit encryption, two-factor authentication, cold storage for digital assets, and regular security audits. Your funds are held in segregated accounts.' },
-  { q: 'What markets can I trade?', a: 'NexTrade offers access to 100+ instruments including major and minor forex pairs, popular cryptocurrencies, commodities like gold and oil, and major stock CFDs.' },
+  { q: 'Is my money safe on Master FX?', a: 'We employ bank-grade security including 256-bit encryption, two-factor authentication, cold storage for digital assets, and regular security audits. Your funds are held in segregated accounts.' },
+  { q: 'What markets can I trade?', a: 'Master FX offers access to 100+ instruments including major and minor forex pairs, popular cryptocurrencies, commodities like gold and oil, and major stock CFDs.' },
   { q: 'How do deposits and withdrawals work?', a: 'We support multiple payment methods including bank transfers, credit/debit cards, and crypto wallets. Deposits are typically instant, and withdrawals process within 24-48 hours.' },
   { q: 'Can I practice before trading with real money?', a: 'Every account includes a $10,000 demo account with live market data. Practice your strategies risk-free before committing real capital.' },
 ];
@@ -114,7 +114,7 @@ export default function HomePage() {
       <section className="py-24">
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Why Choose NexTrade?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">Why Choose Master FX?</h2>
             <p className="mt-4 text-slate-400 max-w-xl mx-auto">Everything you need to trade professionally, powered by cutting-edge AI technology.</p>
           </motion.div>
 
@@ -165,7 +165,7 @@ export default function HomePage() {
                     <Bot className="w-5 h-5 text-accent-amber" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white">NexTrade AI</p>
+                    <p className="text-sm font-semibold text-white">Master FX AI</p>
                     <p className="text-xs text-slate-500">Always learning, always helping</p>
                   </div>
                 </div>

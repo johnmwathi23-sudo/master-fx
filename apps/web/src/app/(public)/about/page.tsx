@@ -29,7 +29,7 @@ export default function AboutPage() {
               Building the Future of<br /><span className="gradient-text">Intelligent Trading</span>
             </h1>
             <p className="text-lg text-slate-400 leading-relaxed">
-              NexTrade was founded in 2024 with a simple mission: make professional-grade trading accessible to everyone through the power of artificial intelligence. We believe every trader deserves the tools and insights previously available only to Wall Street.
+              Master FX was founded in 2024 with a simple mission: make professional-grade trading accessible to everyone through the power of artificial intelligence. We believe every trader deserves the tools and insights previously available only to Wall Street.
             </p>
           </motion.div>
         </div>
@@ -44,7 +44,7 @@ export default function AboutPage() {
                 We are democratizing access to sophisticated trading tools. Our AI-powered platform combines real-time market analysis, intelligent risk management, and seamless execution to give every trader an edge.
               </p>
               <p className="text-slate-400 leading-relaxed">
-                From beginners learning their first strategy to professionals managing multi-million dollar portfolios, NexTrade scales to meet your needs. Our $10,000 demo accounts let you practice without risk, while our advanced tools handle the demands of high-frequency trading.
+                From beginners learning their first strategy to professionals managing multi-million dollar portfolios, Master FX scales to meet your needs. Our $10,000 demo accounts let you practice without risk, while our advanced tools handle the demands of high-frequency trading.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">

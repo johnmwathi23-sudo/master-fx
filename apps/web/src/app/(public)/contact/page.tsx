@@ -33,7 +33,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="lg:col-span-1 space-y-4">
               {[
-                { icon: Mail, label: 'Email', value: 'support@nextrade.io', sub: 'We respond within 24h' },
+                { icon: Mail, label: 'Email', value: 'support@master-fx.com', sub: 'We respond within 24h' },
                 { icon: Phone, label: 'Phone', value: '+1 (888) 555-0123', sub: 'Mon-Fri 9AM-6PM EST' },
                 { icon: MapPin, label: 'Office', value: 'Singapore', sub: '1 Raffles Place, #44-02' },
                 { icon: MessageSquare, label: 'Live Chat', value: 'Available 24/7', sub: 'Pro & Enterprise users' },

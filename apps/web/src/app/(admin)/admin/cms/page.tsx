@@ -8,7 +8,7 @@ import { FileText, Plus, Edit, Trash2 } from 'lucide-react';
 import { useToast } from '@/components/ui/toaster';
 
 const mockPosts = [
-  { id: '1', title: 'Getting Started with NexTrade', status: 'Published', date: '2024-12-10' },
+  { id: '1', title: 'Getting Started with Master FX', status: 'Published', date: '2024-12-10' },
   { id: '2', title: 'Understanding Risk Management', status: 'Published', date: '2024-12-08' },
   { id: '3', title: 'AI Trading Strategies Guide', status: 'Draft', date: '2024-12-14' },
 ];

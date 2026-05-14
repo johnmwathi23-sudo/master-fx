@@ -1,4 +1,4 @@
-# NexTrade - AI-Enhanced Trading Platform
+# Master FX - AI-Enhanced Trading Platform
 
 A production-grade simulated trading platform with AI-powered assistant, real-time market data, and comprehensive admin dashboard.
 
@@ -37,7 +37,7 @@ A production-grade simulated trading platform with AI-powered assistant, real-ti
 ### 1. Clone & Install
 
 ```bash
-git clone <repo-url> && cd nextrade
+git clone <repo-url> && cd master-fx
 npm install
 ```
 
@@ -81,8 +81,8 @@ npm run dev
 
 | Role | Email | Password |
 |------|-------|----------|
-| Super Admin | admin@nextrade.io | Admin@123456 |
-| User | demo@nextrade.io | Demo@123456 |
+| Super Admin | admin@master-fx.com | 0714534349 |
+| Demo User | demo@master-fx.com | demo2026 |
 
 ## Docker Deployment
 
@@ -95,15 +95,15 @@ This starts PostgreSQL, Redis, NestJS server, Next.js web, and NGINX reverse pro
 
 ## Features
 
-- **Simulated Trading Engine** — Buy/sell with stop-loss/take-profit, P&L tracking, market data simulation
-- **AI Assistant** — OpenAI GPT-4o powered chat with fallback canned responses
+- **Simulated Trading Engine** — Forex, crypto, commodities, stocks & indices
+- **AI Assistant** — GPT-4o powered chat with market insights
 - **Real-Time Market Data** — WebSocket price updates every 5 seconds
-- **Wallet System** — Deposits (auto-complete), withdrawals (admin approval), transaction history
-- **Admin Dashboard** — User management, KYC review, deposit/withdrawal approval, analytics, revenue, CMS
-- **Role-Based Access** — USER, ADMIN, SUPER_ADMIN with JWT auth + refresh tokens
-- **Referral System** — Unique referral codes, bonus tracking
-- **KYC Verification** — Document submission and admin review workflow
-- **Dark Fintech UI** — Glassmorphism, Framer Motion animations, responsive design
+- **Wallet System** — Deposits, withdrawals, transaction history
+- **Admin Dashboard** — User management, KYC review, analytics, CMS
+- **Role-Based Access** — USER, ADMIN, SUPER_ADMIN with JWT auth
+- **Referral System** — Unique codes, bonus tracking
+- **KYC Verification** — Document submission & review workflow
+- **Dark Fintech UI** — Glassmorphism, Framer Motion animations
 
 ## API Endpoints
 

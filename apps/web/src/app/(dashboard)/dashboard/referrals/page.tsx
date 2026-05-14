@@ -17,7 +17,7 @@ const mockReferrals = [
 export default function ReferralsPage() {
   const [copied, setCopied] = useState(false);
   const referralCode = 'DEMO4K2X';
-  const referralLink = `https://nextrade.io/ref/${referralCode}`;
+  const referralLink = `https://master-fx.com/ref/${referralCode}`;
   const toast = useToast();
 
   const copyCode = () => {
