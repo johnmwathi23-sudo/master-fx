@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 
 interface TabsProps {
   tabs: { id: string; label: string; icon?: React.ReactNode }[];

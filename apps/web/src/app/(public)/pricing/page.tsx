@@ -5,7 +5,7 @@ import { Check, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 
 const plans = [
   {

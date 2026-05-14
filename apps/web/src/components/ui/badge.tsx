@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: 'green' | 'red' | 'blue' | 'amber' | 'purple' | 'default';

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { IUser, ThemeMode } from '@nextrade/types';
+import type { IUser, ThemeMode } from '@/types';
 
 interface AuthState {
   user: IUser | null;

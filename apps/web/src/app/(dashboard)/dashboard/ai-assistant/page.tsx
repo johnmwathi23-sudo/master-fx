@@ -6,7 +6,7 @@ import { Bot, Send, Lightbulb, TrendingUp, Shield, Trash2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 import { api } from '@/lib/api-client';
 
 interface Message {

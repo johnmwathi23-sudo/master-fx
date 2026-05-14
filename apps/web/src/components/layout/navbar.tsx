@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, TrendingUp, LogIn, UserPlus } from 'lucide-react';
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 import { useThemeStore } from '@/store/theme-store';
 import { useAuthStore } from '@/store/auth-store';
 import { Button } from '@/components/ui/button';

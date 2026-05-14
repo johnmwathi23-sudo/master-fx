@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bot, Send, X, MessageSquare } from 'lucide-react';
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 import { api } from '@/lib/api-client';
 
 interface Message {

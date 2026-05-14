@@ -11,7 +11,7 @@ import { useTradeStore } from '@/store/trade-store';
 import { useMarketStore } from '@/store/market-store';
 import { api } from '@/lib/api-client';
 import { useToast } from '@/components/ui/toaster';
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 
 const assets = [
   { id: '1', symbol: 'EUR/USD', price: 1.08500, change: 0.14, category: 'FOREX' },

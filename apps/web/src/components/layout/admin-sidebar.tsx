@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 import {
   LayoutDashboard, Users, Shield, DollarSign, BarChart3, TrendingUp,
   Bell, FileText, Settings, ChevronLeft,

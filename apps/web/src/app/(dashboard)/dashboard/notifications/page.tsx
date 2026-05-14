@@ -5,7 +5,7 @@ import { Bell, CheckCheck, TrendingUp, DollarSign, Shield, Bot, AlertTriangle, I
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 
 const notifications = [
   { id: '1', type: 'TRADE_CLOSED', title: 'Trade Closed', message: 'Your BUY trade on EUR/USD closed with +$62.50 profit', isRead: false, time: '5m ago' },

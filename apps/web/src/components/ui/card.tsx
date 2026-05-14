@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'glass' | 'hover' | 'stat';

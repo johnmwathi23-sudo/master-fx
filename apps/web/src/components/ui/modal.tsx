@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@nextrade/utils';
+import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
 
 interface ModalProps {
