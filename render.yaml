@@ -3,8 +3,8 @@ services:
     name: master-fx-server
     runtime: node
     rootDir: apps/server
-    buildCommand: npm install && npx prisma generate && npm run build
-    startCommand: npm run start:prod
+    buildCommand: cd ../.. && npm install && cd apps/server && npx prisma generate && npm run build
+    startCommand: node dist/src/main
     envVars:
       - key: NODE_ENV
         value: production
