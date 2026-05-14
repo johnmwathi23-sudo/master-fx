@@ -1,34 +1,36 @@
 const fs = require('fs');
 const path = require('path');
 
-try {
-  const zipPath = require.resolve('iterare/lib/zip');
-} catch {
-  const iteratePath = require.resolve('iterare/lib/iterate');
-  const zipFile = path.join(path.dirname(iteratePath), 'zip.js');
-  const content = `"use strict";
+const zipContent = `"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.zip = zip;
-function zip() {
-  var args = [];
-  for (var _i = 0; _i < arguments.length; _i++) {
-    args[_i] = arguments[_i];
-  }
-  if (args.length === 0) return function () { return []; }();
-  var iterators = args.map(function (it) { return it[Symbol.iterator](); });
-  return _zip(iterators);
-}
-function _zip(iterators) {
-  return _a();
-  function _a() {
-    var results = iterators.map(function (it) { return it.next(); });
-    if (results.some(function (r) { return r.done; })) {
-      return { done: true, value: undefined };
+exports.ZipIterator = void 0;
+var ZipIterator = (function () {
+    function ZipIterator(a, b) {
+        this.a = a;
+        this.b = b;
     }
-    return { done: false, value: results.map(function (r) { return r.value; }) };
-  }
-}
+    ZipIterator.prototype.next = function () {
+        var aNext = this.a.next();
+        var bNext = this.b.next();
+        if (aNext.done || bNext.done) {
+            return { done: true, value: void 0 };
+        }
+        return { done: false, value: [aNext.value, bNext.value] };
+    };
+    return ZipIterator;
+}());
+exports.ZipIterator = ZipIterator;
 `;
-  fs.writeFileSync(zipFile, content);
-  console.log('✓ Patched iterare: missing zip.js created');
-}
+
+try {
+  const existing = require.resolve('iterare/lib/zip');
+  const existingContent = fs.readFileSync(existing, 'utf8');
+  if (existingContent.includes('ZipIterator')) {
+    process.exit(0);
+  }
+} catch {}
+
+const iteratePath = require.resolve('iterare/lib/iterate');
+const zipFile = path.join(path.dirname(iteratePath), 'zip.js');
+fs.writeFileSync(zipFile, zipContent);
+console.log('✓ Patched iterare: missing zip.js created with ZipIterator');
