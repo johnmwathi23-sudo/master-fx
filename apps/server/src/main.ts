@@ -13,13 +13,13 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const port = configService.get<number>('API_PORT', 4000);
-  const corsOrigin = configService.get<string>('CORS_ORIGIN', 'http://localhost:3000');
+  const corsOrigin = configService.get<string>('CORS_ORIGIN', 'https://web-zeta-topaz-36.vercel.app,http://localhost:3000');
 
   app.use(helmet.default());
   app.use(cookieParser());
 
   app.enableCors({
-    origin: corsOrigin,
+    origin: corsOrigin === '*' ? '*' : corsOrigin.split(',').map(s => s.trim()),
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Refresh-Token'],

@@ -2,9 +2,8 @@ services:
   - type: web
     name: master-fx-server
     runtime: node
-    rootDir: apps/server
-    buildCommand: cd ../.. && npm install && cd apps/server && npx prisma generate && npm run build
-    startCommand: node dist/src/main
+    buildCommand: npm install && npm run build --workspace=apps/server
+    startCommand: node apps/server/dist/src/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -21,7 +20,7 @@ services:
       - key: JWT_REFRESH_SECRET
         sync: false
       - key: CORS_ORIGIN
-        sync: false
+        value: "https://web-zeta-topaz-36.vercel.app,http://localhost:3000"
       - key: OPENAI_API_KEY
         sync: false
       - key: SMTP_HOST
